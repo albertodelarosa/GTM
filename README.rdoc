@@ -1,28 +1,50 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+INSTALLATION=====
+1. run
+    bundle install
 
-Things you may want to cover:
+2. in config/database.yml:
+    change:
+    username: <%= ENV['GTM_DATABASE_USERNAME'] %>
+    password: <%= ENV['GTM_DATABASE_PASSWORD'] %>
 
-* Ruby version
+  to your local db username and password
 
-* System dependencies
+3. run
+    bundle exec rake db:create:all (just in case you want to run some tests)
+    bundle exec rake db:migrate
+    bundle exec rake db:seed
+    if you get a error msg
+      - One of the following schema(s) is invalid: "newrelic" "public" -
+    then run
+      bundle exec rake:reset
 
-* Configuration
+INITIALIZATION=====
+1. run
+    rails server --binding=0.0.0.0
+    (this will bind 0.0.0.0 to your mac so you can see localhost on mobile devices)
 
-* Database creation
+2. in order to properly display subdomains use address:
+    http://lvh.me:3000 not http://localhost:3000
 
-* Database initialization
+USAGE=====
+i.   The site has two models, orgs and events.
+ii.  Orgs have multiple events.
+iii. Events have one org
+iv.  only searching within an org/domain is possible.
+v.   testing is done by rspec
+  a. org & event models have specs
+  b. only org controller has specs
 
-* How to run the test suite
+1. Models are populated... aww snap! So, searching is possible.
+    a. Searching: it's clear on the site, so...
+       limit field is *required*
+       host field is optional
+    b. You'll need to click the back button after each search
 
-* Services (job queues, cache servers, search engines, etc.)
+2. You can add, edit, and delete events and orgs
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
+3. enjoy!
 <tt>rake doc:app</tt>.
+
