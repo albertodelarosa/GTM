@@ -1,0 +1,11 @@
+= simple_form_for orgs_path, method: :get, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    .col-xs-12
+      = f.input "limit", input_html: { type: "number", class: "form-control", placeholder: "how many events would you like?" }
+  .form-group
+    .col-sm-12
+      = f.input "host", required: false, input_html: { type: "text", class: "form-control", placeholder: "host name" }
+  .form-group
+    .col-xs-12
+      %button.btn.btn-default.btn-block.btn-success{ type: "submit" } Search
+

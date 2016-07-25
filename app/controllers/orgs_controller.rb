@@ -79,4 +79,10 @@ class OrgsController < ApplicationController
     def org_params
       params.require(:org).permit(:name, :subdomain)
     end
+
+    def search_params
+      temp = params.require( "/orgs" ).permit( :limit )
+      temp.merge!( params.require( "/orgs" ).permit( :host ) )
+      return temp
+    end
 end
