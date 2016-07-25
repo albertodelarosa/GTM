@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @org.name
+%p
+  %strong Subdomain:
+  = @org.subdomain
+= link_to 'Edit', edit_org_path(@org)
+|
+= link_to 'Back', orgs_path
