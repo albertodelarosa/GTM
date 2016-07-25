@@ -1,5 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe Org, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  context "public domain" do
+    before do
+      Apartment::Tenant.switch!
+    end
+
+    it{ expect( Apartment::Tenant.current ).to include( "public" ) }
+  end
+
+  context "custom domain" do
+    before do
+      Apartment::Tenant.switch!("newrelic")
+    end
+
+    it{ expect( Apartment::Tenant.current ).not_to include( "public" ) }
+    it{ expect( Apartment::Tenant.current ).not_to include( "oldrelic" ) }
+    it{ expect( Apartment::Tenant.current ).to include( "newrelic" ) }
+  end
+
 end
+
