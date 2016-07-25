@@ -5,6 +5,14 @@ class OrgsController < ApplicationController
   # GET /orgs.json
   def index
     @orgs = Org.all
+    @events = Event.all
+    @org = Org.new
+    @tenants = Apartment.tenant_names
+
+    if params.has_key?( "/orgs"  )
+      search = search_params
+      search.has_key?( :host ) ? @found_events = Event.search_the_last( search[ :limit ] ).where( host: search[ :host ] ) : @found_events = Event.search_the_last( search[ :limit ] )
+    end
   end
 
   # GET /orgs/1
