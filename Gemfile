@@ -32,9 +32,28 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Multitenant support
+gem 'apartment'
+
+# Better DB output in IRB
+gem 'hirb'
+
+# Easier form gereration
+gem 'simple_form'
+
+# Sass-powered version of Bootstrap, ready to drop right into your Sass powered applications
+gem 'bootstrap-sass', '~> 3.3.6'
+
+# User haml instead of erb... more efficient
+gem 'haml'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # For testing
+  gem 'rspec-rails', '~> 3.5'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
@@ -43,5 +62,12 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #erb converter to haml
+  gem "erb2haml"
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
