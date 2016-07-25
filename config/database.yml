@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: gtm_production
-  username: gtm
+  username: <%= ENV['GTM_DATABASE_USERNAME'] %>
   password: <%= ENV['GTM_DATABASE_PASSWORD'] %>
